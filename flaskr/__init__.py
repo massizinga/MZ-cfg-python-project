@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 
@@ -29,22 +29,23 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route("/")
     def say_hello():
-        print("got into say_hello")
+
         return render_template("index.html")
     
     @app.route("/create")
     def create_patient():
         return render_template("create.html")
     
-    
+    @app.route('/post-create', methods = ['POST'])
+    def post():
+        text = request.form['first_name']
+        processed_text = text.upper()
+        return processed_text
 
     from . import db
     db.init_app(app)
     
-    print("reached end of create_app()")
+
     
     return app
 
-print("got this far!")
-#if __name__ == "__main__":
-#    app = create_app()
