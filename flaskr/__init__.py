@@ -3,7 +3,9 @@ import os
 from flask import Flask, render_template
 
 
+
 def create_app(test_config=None):
+    print("got into create_app()!")
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -27,9 +29,22 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route("/")
     def say_hello():
+        print("got into say_hello")
         return render_template("index.html")
+    
+    @app.route("/create")
+    def create_patient():
+        return render_template("create.html")
+    
+    
 
     from . import db
     db.init_app(app)
-
+    
+    print("reached end of create_app()")
+    
     return app
+
+print("got this far!")
+#if __name__ == "__main__":
+#    app = create_app()

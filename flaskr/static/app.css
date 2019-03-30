@@ -5,3 +5,14 @@ h1 {
 body {
   background-color: pink;
 }
+
+.link-button {
+    display: inline-block;
+    padding: 1rem;
+    background: #ddd;
+    border: 1px solid #ababab;
+    border-radius: 4px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+}
