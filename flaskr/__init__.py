@@ -1,5 +1,6 @@
 import os
 
+
 from flask import Flask, render_template, request
 
 
@@ -32,15 +33,18 @@ def create_app(test_config=None):
 
         return render_template("index.html")
     
-    @app.route("/create")
-    def create_patient():
-        return render_template("create.html")
+#    @app.route("/create")
+#    def create_patient():
+#        return render_template("create.html")
     
-    @app.route('/post-create', methods = ['POST'])
-    def post():
-        text = request.form['first_name']
-        processed_text = text.upper()
-        return processed_text
+#    @app.route('/post-create', methods = ['POST'])
+#    def post():
+#        text = request.form['first_name']
+#        processed_text = text.upper()
+#        v = make_db.get_db()
+#        return v
+
+    
 
     from . import db
     db.init_app(app)
